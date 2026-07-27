@@ -62,7 +62,7 @@ export default function BuilderPage() {
       setHasUnsavedChanges(false)
     } catch (error) {
       console.error('Save failed:', error)
-      alert('Failed to save project. Please try again.')
+      alert('Failed to save project. Please check your connection and try again.')
     } finally {
       setIsSaving(false)
     }
