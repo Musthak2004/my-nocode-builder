@@ -16,8 +16,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My No-Code Builder",
-  description: "Build Apps Without Code — the easiest way for small businesses to create apps.",
+  title: "NocoBase — Build Apps Without Code",
+  description:
+    "The easiest way for small businesses to create beautiful, functional apps — no coding, no stress, no waiting.",
+  openGraph: {
+    title: "NocoBase — Build Apps Without Code",
+    description:
+    "The easiest way for small businesses to create beautiful, functional apps — no coding, no stress, no waiting.",
+    type: "website",
+    siteName: "NocoBase",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NocoBase — Build Apps Without Code",
+    description:
+    "The easiest way for small businesses to create beautiful, functional apps — no coding, no stress, no waiting.",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +42,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <ClerkProvider>
           <Suspense fallback={null}>
             <PostHogProvider>
@@ -38,6 +52,8 @@ export default function RootLayout({
             </PostHogProvider>
           </Suspense>
         </ClerkProvider>
+        {/* Noise texture overlay */}
+        <div className="noise-overlay" aria-hidden="true" />
       </body>
     </html>
   );

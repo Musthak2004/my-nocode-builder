@@ -6,6 +6,7 @@
 ![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF?style=flat-square)
 ![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=flat-square)
 ![Vercel](https://img.shields.io/badge/Deployed-Vercel-000?style=flat-square&logo=vercel)
+![Custom Domain](https://img.shields.io/badge/Domain-visualdev.dpdns.org-1DA1F2?style=flat-square&logo=cloudflare)
 
 # 🚀 NoCode Builder
 
@@ -222,12 +223,25 @@ Use `TESTING_NOTES.md` as a guide for running user testing sessions with:
 
 The app is deployed on [Vercel](https://vercel.com). Every push to `main` triggers an automatic deployment.
 
+| URL | Description |
+|-----|-------------|
+| [https://visualdev.dpdns.org](https://visualdev.dpdns.org) | 🔹 Custom domain (primary) |
+| [https://my-nocode-builder-six.vercel.app](https://my-nocode-builder-six.vercel.app) | 🔸 Vercel default domain (fallback) |
+
 ```bash
 # Manual deployment
 npx vercel --prod
 ```
 
 Environment variables are managed via `vercel env add` and automatically linked to the production and preview environments.
+
+### Custom Domain Setup
+
+The app is accessible via a custom domain `visualdev.dpdns.org`, set up with:
+
+- **DigitalPlat** — free subdomain registration
+- **Cloudflare DNS** — CNAME record (`visualdev.dpdns.org` → `my-nocode-builder-six.vercel.app`) with Vercel verification TXT record
+- **Vercel SSL** — automatic certificate provisioning via Let's Encrypt
 
 ---
 
@@ -240,5 +254,5 @@ This project is private and not licensed for external use.
 <p align="center">
   Built with ❤️ for small businesses and makers
   <br>
-  <a href="https://my-nocode-builder-six.vercel.app">Live App</a>
+  <a href="https://visualdev.dpdns.org">visualdev.dpdns.org</a> · <a href="https://my-nocode-builder-six.vercel.app">mirror</a>
 </p>
