@@ -35,7 +35,6 @@ export default function BuilderPage() {
       const currentProjectId = useBuilderStore.getState().projectId
 
       if (currentProjectId && currentProjectId !== 'new') {
-        // Update existing
         const res = await fetch(`/api/projects/${currentProjectId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -43,7 +42,6 @@ export default function BuilderPage() {
         })
         if (!res.ok) throw new Error('Save failed')
       } else {
-        // Create new
         const res = await fetch('/api/projects', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -69,7 +67,7 @@ export default function BuilderPage() {
   }
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-white">
+    <div className="h-screen flex flex-col overflow-hidden bg-gray-50">
       <BuilderNavbar onSave={handleSave} />
       <div className="flex flex-1 overflow-hidden">
         <ComponentPanel />
