@@ -5,6 +5,7 @@ import { UserButton } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { Plus, Loader2, Trash2, ExternalLink, Edit, FolderOpen } from 'lucide-react'
 import { Project } from '@/types/builder'
+import FeedbackWidget from '@/components/feedback/FeedbackWidget'
 
 function ProjectSkeleton() {
   return (
@@ -225,6 +226,7 @@ export default function DashboardPage() {
           </>
         )}
       </main>
+      <FeedbackWidget />
     </div>
   )
 }

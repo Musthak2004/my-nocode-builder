@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { BuilderComponent, Project } from '@/types/builder'
 import { v4 as uuidv4 } from 'uuid'
+import { analytics } from '@/lib/analytics'
 
 interface BuilderStore {
   // State
@@ -98,15 +99,26 @@ export const useBuilderStore = create<BuilderStore>((set, get) => ({
       components: [...state.components, newComponent],
       hasUnsavedChanges: true,
     }))
+
+    // Track
+    const projectId = get().projectId
+    analytics.componentAdded(type, projectId || 'new')
   },
 
   removeComponent: (id) => {
+    const component = get().components.find((c) => c.id === id)
     set((state) => ({
       components: state.components.filter((c) => c.id !== id),
       selectedComponentId:
         state.selectedComponentId === id ? null : state.selectedComponentId,
       hasUnsavedChanges: true,
     }))
+
+    // Track
+    if (component) {
+      const projectId = get().projectId
+      analytics.componentDeleted(component.type, projectId || 'new')
+    }
   },
 
   updateComponent: (id, props) => {
