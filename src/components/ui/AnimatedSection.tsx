@@ -65,7 +65,7 @@ export default function AnimatedSection({
       transition={{
         duration,
         delay,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       }}
       className={cn(className)}
       {...props}
