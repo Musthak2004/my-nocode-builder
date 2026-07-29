@@ -65,7 +65,7 @@ export default function OnboardingModal({ onClose }: Props) {
         {/* Close */}
         <button
           onClick={handleSkip}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1 rounded-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 text-foreground-tertiary hover:text-foreground-secondary p-1 rounded-lg hover:bg-surface transition-colors"
         >
           <X size={20} />
         </button>
@@ -76,7 +76,7 @@ export default function OnboardingModal({ onClose }: Props) {
             <div
               key={index}
               className={`h-1.5 flex-1 rounded-full transition-all ${
-                index <= currentStep ? 'bg-gray-900' : 'bg-gray-100'
+                index <= currentStep ? 'bg-foreground' : 'bg-border'
               }`}
             />
           ))}
@@ -84,13 +84,13 @@ export default function OnboardingModal({ onClose }: Props) {
 
         {/* Content */}
         <div className="text-center">
-          <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-5 text-indigo-600">
+          <div className="w-16 h-16 bg-primary-subtle rounded-2xl flex items-center justify-center mx-auto mb-5 text-primary">
             {step.icon}
           </div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2">
+          <h2 className="text-xl font-bold text-foreground mb-2">
             {step.title}
           </h2>
-          <p className="text-gray-500 leading-relaxed text-sm">
+          <p className="text-foreground-secondary leading-relaxed text-sm">
             {step.description}
           </p>
         </div>
@@ -99,13 +99,13 @@ export default function OnboardingModal({ onClose }: Props) {
         <div className="mt-8 flex items-center justify-between">
           <button
             onClick={handleSkip}
-            className="text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium"
+            className="text-sm text-foreground-tertiary hover:text-foreground transition-colors font-medium"
           >
             Skip tour
           </button>
           <button
             onClick={handleNext}
-            className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-gray-800 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+            className="inline-flex items-center gap-2 bg-foreground text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
           >
             {currentStep < steps.length - 1 ? (
               <>
@@ -113,7 +113,7 @@ export default function OnboardingModal({ onClose }: Props) {
                 <ArrowRight size={16} />
               </>
             ) : (
-              "Let's Build! 🚀"
+              "Let's Build!"
             )}
           </button>
         </div>

@@ -99,7 +99,7 @@ export default function BuilderPage() {
       {showOnboarding && (
         <OnboardingModal onClose={() => setShowOnboarding(false)} />
       )}
-      <div className="h-screen flex flex-col overflow-hidden bg-gray-50">
+      <div className="h-[100dvh] flex flex-col overflow-hidden bg-surface">
         <BuilderNavbar onSave={handleSave} />
         <div className="flex flex-1 overflow-hidden">
           <ComponentPanel />

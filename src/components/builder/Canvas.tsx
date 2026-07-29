@@ -43,22 +43,22 @@ function SortableComponent({ component }: { component: BuilderComponent }) {
       onClick={() => selectComponent(component.id)}
       className={`relative group rounded-xl transition-all cursor-pointer ${
         isSelected
-          ? 'ring-2 ring-indigo-500 ring-offset-2 bg-indigo-50/20'
-          : 'hover:ring-1 hover:ring-gray-200 hover:bg-gray-50/50'
+          ? 'ring-2 ring-primary ring-offset-2 bg-primary-subtle/30'
+          : 'hover:ring-1 hover:ring-border-hover hover:bg-surface'
       }`}
     >
       {/* Drag Handle */}
       <div
         {...attributes}
         {...listeners}
-        className="absolute left-1.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 z-10 transition-opacity"
+        className="absolute left-1.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-border-hover hover:text-foreground-tertiary z-10 transition-opacity"
       >
         <GripVertical size={14} />
       </div>
 
       {/* Selection indicator */}
       {isSelected && (
-        <div className="absolute -top-2.5 left-4 bg-indigo-500 rounded-md px-2 py-0.5 text-[10px] font-medium text-white z-20 shadow-sm">
+        <div className="absolute -top-2.5 left-4 bg-primary rounded-md px-2 py-0.5 text-[10px] font-medium text-white z-20 shadow-sm">
           Selected
         </div>
       )}
@@ -70,7 +70,7 @@ function SortableComponent({ component }: { component: BuilderComponent }) {
 
       {/* Hover action hint */}
       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <span className="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-md border border-gray-100 shadow-sm">
+        <span className="text-[10px] text-foreground-tertiary bg-white px-2 py-0.5 rounded-md border border-border shadow-sm">
           Click to edit
         </span>
       </div>
@@ -103,18 +103,18 @@ export default function Canvas() {
     return (
       <div className="flex-1 flex items-center justify-center">
         <div className="text-center max-w-sm animate-fade-in">
-          <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <MousePointer2 size={32} className="text-indigo-400" />
+          <div className="w-16 h-16 bg-primary-subtle rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <MousePointer2 size={32} className="text-primary/60" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-foreground mb-2">
             Start Building
           </h3>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+          <p className="text-foreground-tertiary text-sm leading-relaxed mb-6">
             Click components from the left panel to add them here.
             <br />
             Drag to reorder, click to edit properties.
           </p>
-          <div className="inline-flex items-center gap-2 text-sm text-indigo-600 bg-indigo-50 px-4 py-2 rounded-xl font-medium">
+          <div className="inline-flex items-center gap-2 text-sm text-primary bg-primary-subtle px-4 py-2 rounded-xl font-medium">
             <Plus size={16} />
             <span>Pick a component to get started</span>
           </div>
@@ -124,20 +124,20 @@ export default function Canvas() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto bg-gradient-to-b from-gray-50/80 to-white">
+    <div className="flex-1 overflow-y-auto bg-surface">
       <div className="max-w-2xl mx-auto p-6 lg:p-8 min-h-full">
         {/* Canvas label */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
+          <span className="text-[11px] font-semibold text-foreground-tertiary uppercase tracking-wider">
             Canvas
           </span>
-          <span className="text-[11px] text-gray-300">
+          <span className="text-[11px] text-foreground-tertiary/60">
             ({components.length} {components.length === 1 ? 'component' : 'components'})
           </span>
         </div>
 
         {/* Canvas surface */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm min-h-[32rem] p-4 space-y-2 transition-all">
+        <div className="bg-white rounded-2xl border border-border shadow-sm min-h-[32rem] p-4 space-y-2 transition-all">
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
@@ -155,8 +155,8 @@ export default function Canvas() {
 
           {/* Drop zone hint */}
           {components.length > 0 && (
-            <div className="border-2 border-dashed border-gray-100 rounded-xl p-4 text-center mt-4">
-              <p className="text-xs text-gray-300">
+            <div className="border-2 border-dashed border-border-subtle rounded-xl p-4 text-center mt-4 transition-colors">
+              <p className="text-xs text-foreground-tertiary/50">
                 Drop components here or add from the panel
               </p>
             </div>
